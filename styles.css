@@ -1,20 +1,34 @@
+/*Lo que estamos haciendo aquí es usar la propiedad flex para especificar que 
+el elemento #titulo debe tomar todo el espacio disponible (usando flex: 1;) 
+y que el elemento #logo debe mantener su tamaño original (usando flex: 0;). 
+*/
 #titulo{
+    flex:1;
     color:brown;
-
     text-align: center;
-    height: fit-content;
+    height: 100%;
     font-family: 'Times New Roman', Times, serif;
-    border: 2px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
+
 #bloque_titulo{
     background-color: black;
     text-align :left;
-    height: 100px;
+    display: flex;
+    height: 100px; /*tamaño del bloque negro*/
+    justify-content: center; /* averiguar que hace */
+    align-items: center; /*centra lo elementos que esten dentro del bloque*/
+    padding: 0 10px;
+    
 }
 #fondo{
     color: azure;
 }
 #logo{
-    width: 40px;
-    float: right;
+    flex: 0;
+    width: 80px;
+    height: 80px;
+    ;
 }
