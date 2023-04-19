@@ -24,11 +24,54 @@ y que el elemento #logo debe mantener su tamaño original (usando flex: 0;).
     
 }
 #fondo{
-    color: azure;
+    background-color: darkgray;
 }
 #logo{
     flex: 0;
     width: 80px;
     height: 80px;
     ;
+}
+#fotoFranco{
+    width: 60px;
+    height: 60px;
+    
+    
+}
+#tabla{
+    margin-top: 10px;
+    border-collapse: collapse;
+    width: 100%;
+    background-color: white;
+}
+.centrado{
+    text-align: center;
+}
+th, td, tr {
+    border: 3px solid black;
+    text-align: center;
+    color: black;
+}
+.gray-scale:hover{
+    filter: grayscale(100%);
+}
+.gray-scale{
+    filter: grayscale(0%);
+}
+@keyframes shake {
+    0% { transform: translateX(0); }
+    10% {transform: translateY(10px);}
+    20% { transform: translateX(-10px); }
+    30% {transform: translateY(-10px);}
+    40% { transform: translateX(10px); }
+    50% {transform: translateY(10px);}
+    60% { transform: translateX(-10px); }
+    70% {transform: translateY(-10px);}
+    80% { transform: translateX(10px);}
+    90% {transform: translateY(10px);}
+    100% { transform: translateX(0);transform: translateY(0); }
+}
+.shake:hover{
+    animation-name: shake;
+    animation-duration: 1s;
 }
