@@ -43,9 +43,11 @@ y que el elemento #logo debe mantener su tamaño original (usando flex: 0;).
     height: 60px;
 }
 #tabla{
-    margin-top: 10px;
+    margin-top: 20px;
     border-collapse: collapse;
-    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 75%;
     background-color: white;
 }
 .centrado{
