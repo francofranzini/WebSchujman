@@ -2,29 +2,35 @@
 el elemento #titulo debe tomar todo el espacio disponible (usando flex: 1;) 
 y que el elemento #logo debe mantener su tamaño original (usando flex: 0;). 
 */
+body{
+    font-family:Arial, Helvetica, sans-serif;
+}
 #titulo{
     flex:1;
     color:brown;
     text-align: center;
     height: 100%;
-    font-family: 'Times New Roman', Times, serif;
+    font-family:Arial, Helvetica, sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
+    font-size: 40px;
+
 }
 
 #bloque_titulo{
-    background-color: black;
+    background-color:#1f2023;
     text-align :left;
     display: flex;
     height: 100px; /*tamaño del bloque negro*/
     justify-content: center; /* averiguar que hace */
     align-items: center; /*centra lo elementos que esten dentro del bloque*/
-    padding: 0 10px;
-    
+    padding: 0 10px; 
+    border-bottom: 2px solid darkgray;
 }
+
 #fondo{
-    background-color: darkgray;
+    background-color: #1f2023;
 }
 #logo{
     flex: 0;
@@ -33,10 +39,10 @@ y que el elemento #logo debe mantener su tamaño original (usando flex: 0;).
     ;
 }
 #fotoFranco{
-    width: 60px;
-    height: 60px;
-    
-    
+    width: 75px;
+    height: 75px;
+    border-radius: 5%;
+    margin: 10px;   
 }
 #fotoSopo{
     width: 60px;
@@ -48,13 +54,14 @@ y que el elemento #logo debe mantener su tamaño original (usando flex: 0;).
     margin-left: auto;
     margin-right: auto;
     width: 75%;
-    background-color: white;
+    background-color: #f2f2f2;
 }
 .centrado{
     text-align: center;
 }
 th, td, tr {
     border: 3px solid black;
+    font-size: 25px;
     text-align: center;
     color: black;
 }
