@@ -1,6 +1,0 @@
-<?php
-$host = "localhost";
-$user = "nueve"
-$pass = "9999nueve9";
-$base = nueve;
-?>
