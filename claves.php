@@ -10,7 +10,6 @@ if (! $con ) {
     die ("Error de Conexion (" . mysqli_connect_errno () . ") ".mysqli_connect_error () );
     }
 
-mysqli_close( $con );
 
 //creamos la base de datos
 $db_name = "IPS ";
