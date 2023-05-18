@@ -13,11 +13,7 @@ $sql = "CREATE TABLE IF NOT EXISTS alumnos (
 //verificar que se haya creado la tabla
 //
 $mysql= mysqli_query($con,$sql);
-  if($mysql)
-  {
-    echo "Tabla creada";
-  }
-  else{
+  if(!$mysql){
      die('Query Error'. mysqli_error($con));
   }
 
