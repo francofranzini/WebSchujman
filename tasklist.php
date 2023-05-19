@@ -6,19 +6,21 @@
 
     include('crear_tablas.php');
 
-    $query = "SELECT * from task";
-    $result = mysqli_query($connection, $query);
+    $query = "SELECT * from alumnos";
+    $result = mysqli_query($con, $query);
 
     if (!$result) {
-  //      die('Query Error'. msqli_error($connection));
+        die('Query Error'. mysqli_error($con));
     }
 
     $json = array();
     while ($row = mysqli_fetch_array($result,1)) {
         $json[] = array(
-            'id' => $row['id'],
-            'name' => $row['name'],
-            'description' => $row['description']
+            'nombre' => $row['nombre'],
+            'edad' => $row['edad'],
+            'email' => $row['email'],
+            'dni' => $row['dni'],
+            'imagen' => $row['imagen']
         );
     }
 

@@ -1,31 +1,30 @@
-$(document).ready(function () {
 
+//la siguiente funcion se ejecuta cada vez que se abre el documento
+//de esta forma la funcion fetchTasks() se ejecuta siempre que se carga la pagina
+$(document).ready(function () {
     let edit = false;
     fetchTasks ();
 
     function fetchTasks () {
         $.ajax({
-            url: 'task-list.php',
+            url: 'tasklist.php',
             type: 'GET',
-            success: function (response) {
+            success: function (response){
                 let tasks = JSON.parse(response);
                 let template = '';
                 tasks.forEach(task => {
                     template += `
                         <tr taskId="${task.id}">
-                            <td>${task.id}</td>
-                            <td>
-                                <a href="#" class="task-item">${task.name}</a>
-                            </td>
-                            <td>${task.description}</td>
-                            <td class="align-middle">
-                                <button class="task-delete btn btn-danger">
-                                    Delete
-                                </button>
-                            </td>
+                            <td>${task.nombre}</td>
+                            <td>${task.edad}</td>
+                            <td>${task.email}</td>
+                            <td>${task.dni}</td>
+                            <td>${task.imagen}</td> 
+                        
                         </tr>`;
                 });
-                
+                //por cada forEach en tasks, se agrega a template una linea <tr> html con los
+                //datos de cada task en tasks (alumno en alumnos)
                 $('#all-tasks').html(template);
             },
             error: function (jqXHR, exception) {
@@ -35,7 +34,7 @@ $(document).ready(function () {
     }
 
     $(document).on('click', '.task-delete', function (e) {
-        if (confirm('Are you sure you want to delete it?')) {
+        if (confirm('Esta seguro de que quiere borrar esto?')) {
             let element = $(this)[0].parentElement.parentElement;
             let id = $(element).attr('taskId');
 
