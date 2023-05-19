@@ -1,0 +1,366 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    color: var(--black-color);
+    -webkit-tap-highlight-color: transparent;
+}
+
+:root {
+    --black-color: #2d2d2d;
+    --shadow: 4px 4px 8px 0 rgba(0, 0, 0, 0.264);
+}
+
+svg path {
+    pointer-events: none;
+    transition: all .2s;
+    transition: opacity 0s;
+}
+
+body {
+    background: var(--black-color);
+    overflow-x: hidden;
+}
+
+/*MODAL*/
+.modal{
+    z-index: 900;
+}
+
+#modal-successful {
+    display: flex;
+    position: fixed;
+    width: 40px;
+    height: 60px;
+    background: #fff;
+    box-shadow: var(--shadow);
+    border-radius: 0 0 5px 5px;
+    justify-content: center;
+    align-items: end;
+    translate: 40% -120%;
+    transition: translate .25s;
+}
+
+#modal-successful svg {
+    display: block;
+    background-color: green;
+    scale: 1.3;
+    padding: 4px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+#modal-successful svg path {
+    fill: #fff;
+}
+
+/*APP*/
+
+nav {
+    display: grid;
+    position: relative;
+    place-content: center;
+    width: 100%;
+    height: 100px;
+    margin-bottom: -5px;
+}
+
+nav img {
+    width: 40px;
+    display: block;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 20px;
+}
+
+nav h1 {
+    color: #fff;
+    font-weight: normal;
+    font-size: 20px;
+}
+
+.linea {
+    display: block;
+    width: 90%;
+    max-width: 600px;
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.199);
+    margin: 0 auto;
+    margin-bottom: 40px;
+}
+
+section {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    width: 95%;
+    max-width: 600px;
+    margin: 0 auto;
+    position: relative;
+}
+
+section .bar {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 12px;
+    width: 100%;
+}
+
+section .bar button {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 0 8px;
+    font-weight: 500;
+    width: 100px;
+    height: 30px;
+    border-radius: 200px;
+    outline: none;
+    border: none;
+    font-weight: bold;
+    color: rgba(45, 45, 45, 0.75);
+    transition: .3s color;
+    font-size: 16px;
+    padding: 10px;
+    box-shadow: var(--shadow);
+    cursor: pointer;
+}
+
+section .bar button:hover {
+    color: rgba(45, 45, 45, 1);
+}
+
+section .bar button:hover>svg path {
+    fill-opacity: 1;
+}
+
+section .div-input {
+    display: block;
+    position: relative;
+}
+
+section .bar input {
+    display: block;
+    border-radius: 200px;
+    width: 100%;
+    height: 100%;
+    outline: none;
+    border: none;
+    padding: 0 50px;
+    font-weight: bold;
+    color: var(--black-color);
+    cursor: pointer;
+    box-shadow: var(--shadow);
+    padding-right: 80px;
+}
+
+section input:hover+svg path {
+    fill-opacity: 1;
+}
+
+section .div-input svg {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 18px;
+    z-index: 100;
+    pointer-events: none;
+}
+
+section .table {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    box-shadow: var(--shadow);
+}
+
+section .table table {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+th {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.188);
+    padding-bottom: 8px;
+}
+
+td {
+    border-right: 1px solid rgba(0, 0, 0, 0.188);
+    padding: 8px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 13px;
+    color: #2d2d2dda;
+}
+
+td.photo-td img {
+    width: 60px;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+}
+
+td.edit {
+    min-width: 80px;
+}
+
+td.edit svg {
+    scale: 1.05;
+    border-radius: 50%;
+    cursor: pointer;
+    margin: 0 3px;
+}
+
+td.edit svg:active>path {
+    opacity: .4;
+}
+
+td:nth-last-child(1) {
+    border-right: none;
+}
+
+.form-div {
+    transition: 1s all;
+    height: 0;
+    overflow: hidden;
+}
+
+form {
+    display: grid;
+    position: relative;
+    grid-template-columns: 65% 1fr;
+    background-color: #fff;
+    box-shadow: var(--shadow);
+    width: 100%;
+    height: 280px;
+    padding: 20px;
+    border-radius: 20px;
+    overflow: hidden;
+    overflow-y: auto;
+}
+
+form .text-input-div {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 350px;
+    margin: 20px 0;
+    justify-content: space-around;
+    padding-right: 30px;
+}
+
+form .text-input-div input {
+    display: block;
+    height: 30px;
+    border: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.281);
+    padding-left: 10px;
+    font-weight: normal;
+    font-size: 15px;
+    transition: .3s border;
+}
+
+form .text-input-div input:focus {
+    border-bottom: 1px solid #2d2d2d;
+    outline: none;
+}
+
+form aside {
+    display: flex;
+    flex-direction: column;
+    background-color: #2d2d2d;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 20px;
+}
+
+form aside * {
+    color: #fff;
+    font-weight: normal;
+}
+
+form aside .photo-preview {
+    display: block;
+    position: relative;
+    width: 80px;
+    aspect-ratio: 1/1;
+    background-color: rgba(0, 0, 0, .04);
+    border-radius: 50%;
+    box-shadow: inset 0 10px 10px 0px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+}
+
+form aside .photo-preview img {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+}
+
+form aside input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+form aside label {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 95%;
+    max-width: 120px;
+    padding: 0 5px;
+    height: 40px;
+    border-radius: 100px;
+    box-shadow: var(--shadow);
+    cursor: pointer;
+    transition: .1s all;
+    translate: 0 -18px;
+}
+
+form aside label:active {
+    scale: .98;
+    box-shadow: none;
+}
+
+form aside button[type="submit"] {
+    position: relative;
+    display: flex;
+    border: none;
+    outline: none;
+    height: 40px;
+    border-radius: 100px;
+    translate: 0 5px;
+    width: 90%;
+    border: 3px solid #ffffff;
+    background: transparent;
+    cursor: pointer;
+    transition: all .3s;
+    overflow: hidden;
+}
+
+
+form aside button[type="submit"]:hover {
+    border: none;
+    background: #fff;
+}
+
+form aside button[type="submit"]:hover p {
+    color: var(--black-color);
+}
+
+form aside button[type="submit"] p {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: .3s all;
+}
