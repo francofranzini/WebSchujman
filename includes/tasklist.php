@@ -4,7 +4,7 @@
     //la cual nos traerá todas las tareas para que posteriormente,
     //mediante js, las mostremos en el frontend.
 
-    include('crear_tablas.php');
+    include('conexionDB.php');
 
     $query = "SELECT * from alumnos";
     $result = mysqli_query($con, $query);
