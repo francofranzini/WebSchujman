@@ -22,7 +22,7 @@ $(document).ready(function () {
     fetchTasks ();
 
     
-
+    //FUNCIONA
     function fetchTasks () {
         $.ajax({
             url: 'includes/tasklist.php',
@@ -65,7 +65,7 @@ $(document).ready(function () {
         })    
     }
     
-
+    //HACER
     $('#search').keyup(function (e) {
         //Busco el input que tiene como id 'search' y
         //obtengo su contenido.
@@ -104,12 +104,11 @@ $(document).ready(function () {
 
     //para que se ejecute esto, se debe configurar en el frontend los objetos
     //con clase '.task-delete' para que se ejecute esta funcion
+    //FUNCIONA
     $(document).on('click', '.delete-button', function (e) {
         if (confirm('Esta seguro de que quiere borrar esto?')) {
             let element = $(this)[0].parentElement.parentElement;
-            console.log(element)
-            let id = $(elementc).attr('id');
-            console.log(id);
+            let id = $(element).attr('id');
             $.ajax({
                 url: 'includes/taskdelete.php',
                 type: 'POST',
@@ -125,6 +124,35 @@ $(document).ready(function () {
         }
     });
 
+    $('#save').submit(function (e) {
+        e.preventDefault(); //Hacemos que no se refresque la página por defecto.
+        let postData = { //Lo que le enviaremos al servidor.
+            id: $('id').val(),
+            nombre: $('#nombre').val(),
+            edad: $('#edad').val(),
+            email: $('#email').val(),
+            dni: $('#dni').val(),
+            imagen: $('#imagen').val()
+        };
+        //console.log(postData);
+        let url = edit === false ? 'task-add.php' : 'task-update.php';
+        $.ajax({
+            url: url,
+            type: 'POST',
+            data: postData,
+            success: function(response) {
+                edit = false;
+                fetchTasks ();
+                //Al agregar una nueva task y tocar el botón "Save Task",
+                //reseteo el formulario.
+                $('#task-form').trigger('reset');
+            },
+            error: function (jqXHR, exception) {
+                console.log(jqXHR);
+            }
+        });
+
+    });
 
 
 });

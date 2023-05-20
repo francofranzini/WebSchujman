@@ -53,13 +53,13 @@
         <div class="form-div">
             <form action="">
                 <div class="text-input-div">
-                    <input class="name-input" type="text" placeholder="Name" required>
-                    <input class="age-input" type="number" placeholder="Age" required>
-                    <input class="email-input" type="email" placeholder="Email" required>
-                    <input class="id-input" type="number" placeholder="Id" required>
+                    <input id="nombre" class="name-input" type="text" placeholder="Name" required>
+                    <input id="edad" class="age-input" type="number" placeholder="Age" required>
+                    <input id="email" class="email-input" type="email" placeholder="Email" required>
+                    <input id="dni" class="id-input" type="number" placeholder="Id" required>
                 </div>
                 <aside>
-                    <div name="foto" class="photo-preview">
+                    <div name="imagen" class="photo-preview">
                         <img src="" alt="">
                     </div>
                     <input type="file" id="upload-file-button" name="upload-file-button"
@@ -80,7 +80,7 @@
                             </defs>
                         </svg>
                     </label>
-                    <button type="submit">
+                    <button type="submit" id="save">
                         <p>SAVE</p>
                         <div class="loader"></div>
                     </button>

@@ -3,18 +3,20 @@
     //En este archivo php nos encargaremos de actualizar
     //la información de una tarea.
 
-    include('database.php');
+    include('conexionDB.php');
+    //$id = $_POST['id'];
+    $nombre = $_POST['nombre'];
+    $edad = $_POST['edad'];
+    $email = $_POST['email'];
+    $dni = $_POST['dni'];
+    $imagen = $_POST['imagen'];
 
-    $id = $_POST['id'];
-    $name = $_POST['name'];
-    $description = $_POST['description'];
-
-    if (isset($id) && isset($name) && isset($description)) {
-        $query = "UPDATE task SET name = '$name', description = '$description' WHERE id = '$id'";
-        $result = mysqli_query($connection, $query);
+    if (isset($nombre) && isset($edad) && isset($email)&& isset($dni)&& isset($imagen)) {
+        $query = "UPDATE alumnos SET nombre = '$nombre', edad = '$edad', email = '$email', dni = '$dni', imagen = '$imagen' WHERE nombre = '$nombre'";
+        $result = mysqli_query($con, $query);
 
         if (!$result) {
-            die('Query Error'. msqli_error($connection));
+            die('Query Error'. msqli_error($con));
         }
 
         echo "Task has been updated";
