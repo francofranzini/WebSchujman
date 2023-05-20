@@ -5,6 +5,7 @@
     include('conexionDB.php');
 
     $id = $_POST['id'];
+    
 
     if (isset($id)) {
         $query = "DELETE FROM alumnos WHERE id = $id";

@@ -40,7 +40,7 @@
                         fill="#2D2D2D" fill-opacity="0.75" />
                 </svg>
             </button>
-            <div class="div-input">
+            <div class="div-input" id="search">
                 <input type="text">
                 <svg width="22" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
@@ -49,6 +49,7 @@
                 </svg>
             </div>
         </div>
+        
         <div class="form-div">
             <form action="">
                 <div class="text-input-div">
@@ -58,7 +59,7 @@
                     <input class="id-input" type="number" placeholder="Id" required>
                 </div>
                 <aside>
-                    <div class="photo-preview">
+                    <div name="foto" class="photo-preview">
                         <img src="" alt="">
                     </div>
                     <input type="file" id="upload-file-button" name="upload-file-button"
@@ -93,34 +94,12 @@
                         <th>NAME</th>
                         <th>AGE</th>
                         <th>EMAIL</th>
-                        <th>ID</th>
+                        <th>DNI</th>
                         <th>PHOTO</th>
                         <th class="edit-th">EDIT</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr class="user-tr">
-                        <td class="name-td">Bautista</td>
-                        <td class="age-td">18</td>
-                        <td class="email-td">renaudobautista@gmail.com</td>
-                        <td class="id-td">46582931</td>
-                        <td class="photo-td"><img src="images/fotoSopo.jpg" alt=""></td>
-                        <td class="edit">
-                            <svg class="edit-button" width="23" viewBox="0 0 11 11" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M1.68804 9.28265C1.77469 9.37763 1.89726 9.43184 2.02583 9.43207C2.03912 9.43207 2.05333 9.43161 2.06754 9.43023L3.30229 9.31794L8.48833 4.13282L6.86721 2.51215L1.67979 7.69773L1.5675 8.93248C1.55593 9.06105 1.59978 9.18844 1.68804 9.28265Z"
-                                    fill="#2D2D2D" />
-                            </svg>
-                            <svg class="delete-button" width="18" viewBox="0 0 9 10" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M6.73075 9.1538H2.49999C2.03267 9.1538 1.65383 8.77496 1.65383 8.30765V2.80765H0.807678V1.96149H2.49999V1.53841C2.49999 1.0711 2.87882 0.692261 3.34614 0.692261H5.8846C6.35192 0.692261 6.73075 1.0711 6.73075 1.53841V1.96149H8.42306V2.80765H7.57691V8.30765C7.57691 8.77496 7.19807 9.1538 6.73075 9.1538ZM2.49999 2.80765V8.30765H6.73075V2.80765H2.49999ZM3.34614 1.53841V1.96149H5.8846V1.53841H3.34614ZM5.8846 7.46149H5.03845V3.6538H5.8846V7.46149ZM4.19229 7.46149H3.34614V3.6538H4.19229V7.46149Z"
-                                    fill="#B02727" />
-                            </svg>
-                        </td>
-                    </tr>
-                </tbody>
+                <tbody id="all-tasks"></tbody>
             </table>
         </div>
     </section>
