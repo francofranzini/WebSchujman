@@ -16,9 +16,9 @@ Ajax: .ajax(), .get(), .post()
 
 //la siguiente funcion se ejecuta cada vez que se abre el documento
 //de esta forma la funcion fetchTasks() se ejecuta siempre que se carga la pagina
+
 $(document).ready(function () {
     
-    let edit = false;
     fetchTasks ();
 
     
@@ -65,42 +65,6 @@ $(document).ready(function () {
         })    
     }
     
-    //HACER
-    $('#search').keyup(function (e) {
-        //Busco el input que tiene como id 'search' y
-        //obtengo su contenido.
-
-        let search = $('#search').val();
-
-        if (search) {
-            console.log("hl");
-            //Vamos a utilizar un método JQuery llamado ajax.
-            //Dicho método nos permite hacer una petición a un servidor.
-            //Toma un objeto como parámetro.
-            $.ajax({
-                url: 'includes/tasksearch.php', //Lugar donde hacer la petición.
-                type: 'POST', //Tipo de petición.
-                data: {search: search}, //La información que le envio al servidor.
-                success: function(response) {
-                    let tasks = JSON.parse(response);   //Si el servidor respondió correctamente
-                    //console.log(tasks);               //tengo la información que me devolvió el mismo.
-                                                        //Ver que ya no tengo un string, sino que tengo un obj>
-                    let template = '';
-                    tasks.forEach(task => {
-                        template += `<li class="list-group-item">${task.nombre}</li>`;
-                    });
-
-                    $('#task-result ul').html(template);
-                },
-                error: function (jqXHR, exception) {
-                    console.log(jqXHR);
-                }
-            });
-        }
-        else {
-            $('#task-result ul').html('');
-        }
-    });
 
     //para que se ejecute esto, se debe configurar en el frontend los objetos
     //con clase '.task-delete' para que se ejecute esta funcion
@@ -124,28 +88,47 @@ $(document).ready(function () {
         }
     });
 
-    $('#save').submit(function (e) {
-        e.preventDefault(); //Hacemos que no se refresque la página por defecto.
+
+    //funciona
+    $(document).on('click', '.edit-button', function (e) {
+        let cltr = $(this).closest('tr').attr('id');
+        $('#save').data("id", cltr);
+        $('#save').data("modo",2);
+    });
+    //funciona
+    $(document).on('click', '#agregar', function () {
+        $('#save').data("modo",1);
+    });
+
+
+    //comportamiento del boton guardar
+    $('#save').click(function (e) {
+
+        e.preventDefault(); //Hacemos que no se refresque la página por defecto. 
         let postData = { //Lo que le enviaremos al servidor.
-            id: $('id').val(),
+            id: $(this).data("id"),
             nombre: $('#nombre').val(),
             edad: $('#edad').val(),
             email: $('#email').val(),
             dni: $('#dni').val(),
             imagen: $('#imagen').val()
         };
-        //console.log(postData);
-        let url = edit === false ? 'task-add.php' : 'task-update.php';
+        if($(this).data("modo") == 1) //agregar nuevo
+        {
+            url = 'includes/taskadd.php';
+        }
+        else{ // modificar existente
+            url = 'includes/taskupdate.php';
+        }
         $.ajax({
             url: url,
             type: 'POST',
             data: postData,
             success: function(response) {
-                edit = false;
                 fetchTasks ();
                 //Al agregar una nueva task y tocar el botón "Save Task",
                 //reseteo el formulario.
-                $('#task-form').trigger('reset');
+                $('#all-tasks').trigger('reset');
             },
             error: function (jqXHR, exception) {
                 console.log(jqXHR);
@@ -153,6 +136,9 @@ $(document).ready(function () {
         });
 
     });
+
+ 
+    
 
 
 });
