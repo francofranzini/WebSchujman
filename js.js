@@ -38,6 +38,65 @@
         }
     })
 
+    const searchFunction = (inputValue, selectValue) => {
+        switch (selectValue) {
+            case "name":
+                const tdList = document.querySelectorAll("." + selectValue + "-td")
+                tdList.forEach(td => {
+                    td.textContent.includes(inputValue)
+                        ? td.closest("tr").style.display = "table-row"
+                        : td.closest("tr").style.display = "none"
+                })
+                break;
+            case "age":
+                document.querySelectorAll("." + selectValue + "-td").forEach(td => {
+                    td.textContent.includes(inputValue)
+                        ? td.closest("tr").style.display = "table-row"
+                        : td.closest("tr").style.display = "none"
+                })
+                break;
+            case "email":
+                document.querySelectorAll("." + selectValue + "-td").forEach(td => {
+                    td.textContent.includes(inputValue)
+                        ? td.closest("tr").style.display = "table-row"
+                        : td.closest("tr").style.display = "none"
+                })
+                break;
+            case "dni":
+                document.querySelectorAll("." + selectValue + "-td").forEach(td => {
+                    td.textContent.includes(inputValue)
+                        ? td.closest("tr").style.display = "table-row"
+                        : td.closest("tr").style.display = "none"
+                })
+                break;
+        }
+    }
+    document.querySelector("section input").addEventListener("input", (e) => {
+        const inputValue = e.target.value
+        const selectValue = document.querySelector("section select").value;
+        searchFunction(inputValue, selectValue)
+    })
+    document.querySelector("section select").addEventListener("change", () => {
+        document.querySelector("section input").value = "";
+        document.querySelector("section input").focus();
+        const selectValue = document.querySelector("section select").value;
+        searchFunction("", selectValue)
+        switch (selectValue) {
+            case "name":
+                document.querySelector("section input").type = "text"
+                break;
+            case "age":
+                document.querySelector("section input").type = "number"
+                break;
+            case "email":
+                document.querySelector("section input").type = "text"
+                break;
+            case "dni":
+                document.querySelector("section input").type = "number"
+                break;
+        }
+    })
+
     //FORM
     const ifFormChanged = (e) => {
         const currentUserInfo = {
@@ -110,7 +169,10 @@
                 age: userInfoElement.querySelector(".age-td").textContent,
                 email: userInfoElement.querySelector(".email-td").textContent,
                 id: userInfoElement.querySelector(".id-td").textContent,
-                url: userInfoElement.querySelector(".photo-td img").src,
+                url: userInfoElement.querySelector(".photo-td img")!=null
+                    ? userInfoElement.querySelector(".photo-td img").src
+                    : "" 
+                ,
             }
 
             //complete form with user info
