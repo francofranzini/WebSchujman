@@ -21,7 +21,7 @@
             $result = mysqli_query($con, $query);
 
             if(!$result) {
-                die('Query Error'. msqli_error($con));
+                die('Query Error'. mysqli_error($con));
             }
 
             echo "Task Added Successfully";

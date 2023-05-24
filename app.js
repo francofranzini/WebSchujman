@@ -67,7 +67,7 @@ $(document).ready(function () {
     
 
     //para que se ejecute esto, se debe configurar en el frontend los objetos
-    //con clase '.task-delete' para que se ejecute esta funcion
+    //con clase '.delete-button' para que se ejecute esta funcion
     //FUNCIONA
     $(document).on('click', '.delete-button', function (e) {
         if (confirm('Esta seguro de que quiere borrar esto?')) {
@@ -103,7 +103,6 @@ $(document).ready(function () {
 
     //comportamiento del boton guardar
     $('#save').click(function (e) {
-
         e.preventDefault(); //Hacemos que no se refresque la página por defecto. 
         let postData = { //Lo que le enviaremos al servidor.
             id: $(this).data("id"),
@@ -141,4 +140,4 @@ $(document).ready(function () {
     
 
 
-});
+}); 
