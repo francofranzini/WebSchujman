@@ -1,0 +1,10 @@
+Estado inicial:
+class="signed" estan en "display: none;"
+class="no-signed" estan en "display: block;"
+class="admin" no hay porque la verdad no entendi un porongo de lo que queria el shujman, despues hay que charlarlo
+
+Entonces cuando los usuarios inicien sesion :
+class="signed" tienen que estar en "display: block;",
+class="no-signed" tienen que estar en "display: none;"
+
+Y al reves cuando no hayan iniciado sesion
