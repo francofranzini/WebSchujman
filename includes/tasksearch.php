@@ -16,7 +16,7 @@
             $result = mysqli_query($con, $query);
 
             if (!$result) {
-                die('Query Error'. msqli_error($con));
+                die('Query Error'. mysqli_error($con));
             }
 
             //Vamos a recorrer el resultado de la query para luego
