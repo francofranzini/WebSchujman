@@ -13,105 +13,217 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 </head>
 
 <body>
 
-    <div class="modal-div">
-        <div id="modal-successful" class="modal">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path
-                    d="M8.81806 19.779L2.4541 13.415L5.2841 10.585L8.81806 14.129L18.716 4.22104L21.546 7.05104L8.81806 19.779Z" />
-            </svg>
+    <div id="modal-successful" class="modal">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M8.81806 19.779L2.4541 13.415L5.2841 10.585L8.81806 14.129L18.716 4.22104L21.546 7.05104L8.81806 19.779Z" />
+        </svg>
+    </div>
+
+    <div id="modal-sign-div">
+        <div id="modal-sign" class="modal">
+            <div class="conteiner animate__animated animate__bounceIn">
+                <span>Le enviamos un mail de confirmacion a renaudo@gmail.com. Posterior a la confirmacion le
+                    generaremos una contraseña</span>
+                <button>OK</button>
+            </div>
         </div>
     </div>
 
+
+
     <nav>
         <a href="https://www.ips.edu.ar/"> <img src="images/logo_poli_2020.png" alt="Logo"></a>
+        <svg style="cursor: pointer; display: none;" width="23" viewBox="0 0 24 24" fill="none"
+            xmlns="http://www.w3.org/2000/svg">
+            <path d="M7.83 11L11.41 7.41L10 6L4 12L10 18L11.41 16.59L7.83 13H20V11H7.83Z" fill="white" />
+        </svg>
         <h1>ACTIVIDAD 2 - PARTE 1</h1>
+        <div class="sign-button-div">
+            <input type="checkbox" name="" id="menu-sign" style="display: none;">
+            <label for="menu-sign">
+                <svg width="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M12.0001 22C10.4882 22.0043 8.99532 21.6622 7.6361 21C7.13865 20.758 6.66203 20.4754 6.2111 20.155L6.0741 20.055C4.83392 19.1396 3.81997 17.9522 3.1101 16.584C2.37584 15.1679 1.99501 13.5952 2.00005 12C2.00005 6.47715 6.47725 2 12.0001 2C17.5229 2 22.0001 6.47715 22.0001 12C22.0051 13.5944 21.6247 15.1664 20.8911 16.582C20.1822 17.9494 19.1697 19.1364 17.9311 20.052C17.4639 20.394 16.968 20.6951 16.4491 20.952L16.3691 20.992C15.009 21.6577 13.5144 22.0026 12.0001 22ZM12.0001 17C10.5016 16.9971 9.12776 17.834 8.4431 19.167C10.6845 20.2772 13.3157 20.2772 15.5571 19.167V19.162C14.8716 17.8305 13.4977 16.9954 12.0001 17ZM12.0001 15C14.1662 15.0028 16.1635 16.1701 17.2291 18.056L17.2441 18.043L17.2581 18.031L17.2411 18.046L17.2311 18.054C19.7601 15.8691 20.6644 12.3423 19.4987 9.21011C18.3331 6.07788 15.3432 4.00032 12.0011 4.00032C8.65901 4.00032 5.66909 6.07788 4.50345 9.21011C3.33781 12.3423 4.2421 15.8691 6.7711 18.054C7.83736 16.169 9.83446 15.0026 12.0001 15ZM12.0001 14C9.79096 14 8.0001 12.2091 8.0001 10C8.0001 7.79086 9.79096 6 12.0001 6C14.2092 6 16.0001 7.79086 16.0001 10C16.0001 11.0609 15.5787 12.0783 14.8285 12.8284C14.0784 13.5786 13.061 14 12.0001 14ZM12.0001 8C10.8955 8 10.0001 8.89543 10.0001 10C10.0001 11.1046 10.8955 12 12.0001 12C13.1047 12 14.0001 11.1046 14.0001 10C14.0001 8.89543 13.1047 8 12.0001 8Z"
+                        fill="#fff" />
+                </svg>
+            </label>
+            <label class="fondo-options" for="menu-sign"></label>
+            <div class="options animate__animated animate__bounceIn">
+                <li class="signed config-button">Configuracion</li>
+                <li class="signed sign-out-button" style="color: rgb(188, 46, 46);">Cerrar sesion</li>
+
+                <li class="no-signed sign-in-button">Iniciar sesion</li>
+                <li class="no-signed sign-up-button">Crear cuenta</li>
+            </div>
+        </div>
     </nav>
     <div class="linea"></div>
-    <section>
-        <div class="bar">
-            <button class="add-button" id="agregar">
-                ADD
-                <svg width="20" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path
-                        d="M8.66671 8.66665V12.6666H7.33337V8.66665H3.33337V7.33331H7.33337V3.33331H8.66671V7.33331H12.6667V8.66665H8.66671Z"
-                        fill="#2D2D2D" fill-opacity="0.75" />
-                </svg>
-            </button>
-            <div class="input-div">
-                <svg width="20" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path
-                        d="M10.1167 10.6204L7.02111 7.52427C5.64402 8.50331 3.74643 8.26383 2.65575 6.97335C1.56507 5.68288 1.64516 3.77192 2.83999 2.57723C4.0345 1.38201 5.94565 1.30158 7.23637 2.3922C8.52708 3.48282 8.7667 5.38059 7.78757 6.75781L10.8832 9.85398L10.1173 10.6199L10.1167 10.6204ZM5.13774 2.7083C4.11058 2.70807 3.2244 3.42909 3.01575 4.43484C2.80709 5.44058 3.33329 6.45462 4.27577 6.86302C5.21825 7.27142 6.31798 6.96192 6.90912 6.12192C7.50027 5.28191 7.42036 4.14227 6.71778 3.39298L7.04549 3.71798L6.67607 3.34964L6.66957 3.34314C6.26429 2.93536 5.71266 2.70675 5.13774 2.7083Z"
-                        fill="rgba(45, 45, 45, 0.75)" />
-                </svg>
-                <input type="text">
-            </div>
-            <select name="" id="">
-                <option value="name">NAME</option>
-                <option value="age">AGE</option>
-                <option value="email">EMAIL</option>
-                <option value="dni">DNI</option>
-            </select>
-            
 
-        </div>
-
-        <div class="form-div">
+    <div class="configuration-conteiner">
+        <div class="conteiner">
+            <h2>Configuracion</h2>
             <form action="">
-                <div class="text-input-div">
-                    <input id="nombre" class="name-input" type="text" placeholder="Name" required>
-                    <input id="edad" class="age-input" type="number" placeholder="Age" required>
-                    <input id="email" class="email-input" type="email" placeholder="Email" required>
-                    <input id="dni" class="id-input" type="number" placeholder="Id" required>
+                <div class="inputs-div">
+                    <input type="email" value="baurenaudo@gmail.com">
+                    <input type="password" value="eijofieof">
                 </div>
-                <aside>
-                    <div name="imagen" class="photo-preview">
-                        <img src="" alt="">
-                    </div>
-                    <input type="file" id="upload-file-button" name="upload-file-button"
-                        accept="image/png, .jpeg, .jpg">
-                    <label for="upload-file-button">
-                        UPLOAD
-                        <svg class="upload-svg" width="18" viewBox="0 0 9 9" fill="none"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <g clip-path="url(#clip0_16_24)">
-                                <path
-                                    d="M7.12503 7.49998H2.25003C1.07792 7.50068 0.101614 6.60143 0.00616556 5.43321C-0.0892832 4.26499 0.728101 3.21918 1.88478 3.02961C2.41717 2.08569 3.41632 1.5013 4.50003 1.49996C5.17579 1.49741 5.8322 1.72547 6.36078 2.14648C6.87981 2.55818 7.24882 3.12935 7.41078 3.77173C8.37974 3.92062 9.07045 4.7908 8.99554 5.76827C8.92062 6.74574 8.10537 7.5005 7.12503 7.49998ZM4.50003 2.24998C3.68692 2.25094 2.93728 2.68952 2.53803 3.39786L2.36253 3.71248L2.00665 3.77061C1.23801 3.89938 0.696033 4.59534 0.759484 5.37211C0.822936 6.14888 1.47068 6.74766 2.25003 6.74998H7.12503C7.71325 6.75059 8.20263 6.29796 8.24786 5.71148C8.29309 5.12501 7.87888 4.60269 7.29753 4.51311L6.80403 4.43811L6.68328 3.95361C6.43401 2.95116 5.533 2.24809 4.50003 2.24998ZM5.04378 5.99998H3.95628V4.87498H3.00003L4.50003 3.37498L6.00003 4.87498H5.04378V5.99998Z"
-                                    fill="#fff" />
-                            </g>
-                            <defs>
-                                <clipPath id="clip0_16_24">
-                                    <rect width="9" height="9" fill="white" />
-                                </clipPath>
-                            </defs>
-                        </svg>
-                    </label>
-                    <button type="submit" id="save">
-                        <p>SAVE</p>
-                        <div class="loader"></div>
-                    </button>
-                </aside>
+                <button type="submit">GUARDAR</button>
             </form>
         </div>
-        <div class="table">
-            <table>
-                <thead>
-                    <tr>
-                        <th>NAME</th>
-                        <th>AGE</th>
-                        <th>EMAIL</th>
-                        <th>DNI</th>
-                        <th>PHOTO</th>
-                        <th class="edit-th">EDIT</th>
-                    </tr>
-                </thead>
-                <tbody id="all-tasks"></tbody>
-            </table>
+    </div>
+
+    <div class="sign-conteiner">
+        <div class="conteiner">
+            <div class="sign-restore-div">
+                <h2>Restablecer contraseña</h2>
+                <form action="" id="form-sign-restore">
+                    <input type="email" placeholder="Email:" required>
+                    <button type="submit">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M15.713 12L9.70202 5.99001L8.28802 7.40401L12.888 12.004L8.28802 16.597L9.70202 18.011L15.713 12Z"
+                                fill="#fff" />
+                        </svg>
+                    </button>
+                </form>
+                <div class="span-sign-up span">
+                    <span style="opacity: 0.3;">Ya tienes una cuenta?</span><span> Iniciar sesion</span>
+                </div>
+                <div class="span-create-account span">
+                    <span style="opacity: 0.3;">No tienes una cuenta?</span><span> Crear cuenta</span>
+                </div>
+            </div>
+            <div class="sign-in-div">
+                <h2>Iniciar sesion</h2>
+                <form action="" id="form-sign-in">
+                    <input type="email" placeholder="Email:" required>
+                    <input type="password" placeholder="Contraseña:" required>
+                    <button type="submit">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M15.713 12L9.70202 5.99001L8.28802 7.40401L12.888 12.004L8.28802 16.597L9.70202 18.011L15.713 12Z"
+                                fill="#fff" />
+                        </svg>
+                    </button>
+                </form>
+                <div class="span-create-account span">
+                    <span style="opacity: 0.3;">No tienes una cuenta?</span><span> Crear cuenta</span>
+                </div>
+                <div class="span-forgot-password span">
+                    <span>Haz olvidado tu contraseña?</span>
+                </div>
+            </div>
+            <div class="sign-up-div">
+                <h2>Crear cuenta</h2>
+                <form action="" id="form-sign-up">
+                    <input type="email" placeholder="Email:" required>
+                    <button type="submit">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M15.713 12L9.70202 5.99001L8.28802 7.40401L12.888 12.004L8.28802 16.597L9.70202 18.011L15.713 12Z"
+                                fill="#fff" />
+                        </svg>
+                    </button>
+
+                </form>
+                <div class="span-sign-up span">
+                    <span style="opacity: 0.3;">Ya tienes una cuenta?</span><span> Iniciar sesion</span>
+                </div>
+            </div>
         </div>
-    </section>
+    </div>
+
+    <div class="section-conteiner">
+        <section>
+            <div class="bar">
+                <button class="add-button" id="agregar">
+                    ADD
+                    <svg width="20" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M8.66671 8.66665V12.6666H7.33337V8.66665H3.33337V7.33331H7.33337V3.33331H8.66671V7.33331H12.6667V8.66665H8.66671Z"
+                            fill="#2D2D2D" fill-opacity="0.75" />
+                    </svg>
+                </button>
+                <div class="filter-div">
+                    <select name="" id="">
+                        <option value="name">NAME</option>
+                        <option value="age">AGE</option>
+                        <option value="email">EMAIL</option>
+                        <option value="dni">DNI</option>
+                    </select>
+                    <div class="input-div">
+                        <svg width="20" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M10.1167 10.6204L7.02111 7.52427C5.64402 8.50331 3.74643 8.26383 2.65575 6.97335C1.56507 5.68288 1.64516 3.77192 2.83999 2.57723C4.0345 1.38201 5.94565 1.30158 7.23637 2.3922C8.52708 3.48282 8.7667 5.38059 7.78757 6.75781L10.8832 9.85398L10.1173 10.6199L10.1167 10.6204ZM5.13774 2.7083C4.11058 2.70807 3.2244 3.42909 3.01575 4.43484C2.80709 5.44058 3.33329 6.45462 4.27577 6.86302C5.21825 7.27142 6.31798 6.96192 6.90912 6.12192C7.50027 5.28191 7.42036 4.14227 6.71778 3.39298L7.04549 3.71798L6.67607 3.34964L6.66957 3.34314C6.26429 2.93536 5.71266 2.70675 5.13774 2.7083Z"
+                                fill="rgba(45, 45, 45, 0.75)" />
+                        </svg>
+                        <input type="text">
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="form-div">
+                <form action="">
+                    <div class="text-input-div">
+                        <input id="nombre" class="name-input" type="text" placeholder="Name" required>
+                        <input id="edad" class="age-input" type="number" placeholder="Age" required>
+                        <input id="email" class="email-input" type="email" placeholder="Email" required>
+                        <input id="dni" class="id-input" type="number" placeholder="Id" required>
+                    </div>
+                    <aside>
+                        <div name="imagen" class="photo-preview">
+                            <img src="" alt="">
+                        </div>
+                        <input type="file" id="upload-file-button" name="upload-file-button"
+                            accept="image/png, .jpeg, .jpg">
+                        <label for="upload-file-button">
+                            UPLOAD
+                            <svg class="upload-svg" width="18" viewBox="0 0 9 9" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <g clip-path="url(#clip0_16_24)">
+                                    <path
+                                        d="M7.12503 7.49998H2.25003C1.07792 7.50068 0.101614 6.60143 0.00616556 5.43321C-0.0892832 4.26499 0.728101 3.21918 1.88478 3.02961C2.41717 2.08569 3.41632 1.5013 4.50003 1.49996C5.17579 1.49741 5.8322 1.72547 6.36078 2.14648C6.87981 2.55818 7.24882 3.12935 7.41078 3.77173C8.37974 3.92062 9.07045 4.7908 8.99554 5.76827C8.92062 6.74574 8.10537 7.5005 7.12503 7.49998ZM4.50003 2.24998C3.68692 2.25094 2.93728 2.68952 2.53803 3.39786L2.36253 3.71248L2.00665 3.77061C1.23801 3.89938 0.696033 4.59534 0.759484 5.37211C0.822936 6.14888 1.47068 6.74766 2.25003 6.74998H7.12503C7.71325 6.75059 8.20263 6.29796 8.24786 5.71148C8.29309 5.12501 7.87888 4.60269 7.29753 4.51311L6.80403 4.43811L6.68328 3.95361C6.43401 2.95116 5.533 2.24809 4.50003 2.24998ZM5.04378 5.99998H3.95628V4.87498H3.00003L4.50003 3.37498L6.00003 4.87498H5.04378V5.99998Z"
+                                        fill="#fff" />
+                                </g>
+                                <defs>
+                                    <clipPath id="clip0_16_24">
+                                        <rect width="9" height="9" fill="white" />
+                                    </clipPath>
+                                </defs>
+                            </svg>
+                        </label>
+                        <button type="submit" id="save">
+                            <p>SAVE</p>
+                            <div class="loader"></div>
+                        </button>
+                    </aside>
+                </form>
+            </div>
+            <div class="table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>NAME</th>
+                            <th>AGE</th>
+                            <th>EMAIL</th>
+                            <th>DNI</th>
+                            <th>PHOTO</th>
+                            <th class="edit-th">EDIT</th>
+                        </tr>
+                    </thead>
+                    <tbody id="all-tasks">
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </div>
 
 
     <script src="js.js"></script>
