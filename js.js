@@ -19,7 +19,7 @@
 
     //capas
     const openConfiguration = () => {
-        history.pushState("openConfiguration", "", "/"); latestHistoryState = "openConfiguration";
+        history.pushState("openConfiguration", "", "/~nueve/"); latestHistoryState = "openConfiguration";
         document.querySelector(".section-conteiner").style.display = "none"
         document.querySelector(".configuration-conteiner").style.display = "block";
         document.querySelector("nav img").style.display = "none"
@@ -27,7 +27,7 @@
     }
     const openSignRestore = () => {
         if (document.querySelector(".sign-conteiner").style.display != "block")
-            history.pushState("openSign", "", "/"); latestHistoryState = "openSign";
+            history.pushState("openSign", "", "/~nueve/"); latestHistoryState = "openSign";
         document.querySelector(".section-conteiner").style.display = "none"
         document.querySelector(".sign-conteiner").style.display = "block"
         document.querySelector(".sign-conteiner .conteiner").style.cssText = " translate: 0%;"
@@ -36,7 +36,7 @@
     }
     const openSignIn = () => {
         if (document.querySelector(".sign-conteiner").style.display != "block")
-            history.pushState("openSign", "", "/"); latestHistoryState = "openSign";
+            history.pushState("openSign", "", "/~nueve/"); latestHistoryState = "openSign";
         document.querySelector(".section-conteiner").style.display = "none"
         document.querySelector(".sign-conteiner").style.display = "block"
         document.querySelector(".sign-conteiner .conteiner").style.cssText = " translate: -100%;"
@@ -45,7 +45,7 @@
     }
     const openSignUp = () => {
         if (document.querySelector(".sign-conteiner").style.display != "block")
-            history.pushState("openSign", "", "/"); latestHistoryState = "openSign";
+            history.pushState("openSign", "", "/~nueve/"); latestHistoryState = "openSign";
         document.querySelector(".section-conteiner").style.display = "none"
         document.querySelector(".sign-conteiner").style.display = "block"
         document.querySelector(".sign-conteiner .conteiner").style.cssText = " translate: -200%;"
