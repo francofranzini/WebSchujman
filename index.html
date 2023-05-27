@@ -8,7 +8,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/loader.css">
-    <?php include ('includes/crear_tablas.php'); ?>
+    
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,6 +17,7 @@
 </head>
 
 <body>
+    <?php include ('includes/crear_tablas.php'); ?>
 
     <div id="modal-successful" class="modal">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -102,9 +103,9 @@
             <div class="sign-in-div">
                 <h2>Iniciar sesion</h2>
                 <form action="" id="form-sign-in">
-                    <input type="email" placeholder="Email:" required>
-                    <input type="password" placeholder="Contraseña:" required>
-                    <button type="submit">
+                    <input id="signemail" type="email" placeholder="Email:" required>
+                    <input id="signpass" type="password" placeholder="Contraseña:" required>
+                    <button id="signsubmit" type="submit">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
                                 d="M15.713 12L9.70202 5.99001L8.28802 7.40401L12.888 12.004L8.28802 16.597L9.70202 18.011L15.713 12Z"
@@ -122,8 +123,8 @@
             <div class="sign-up-div">
                 <h2>Crear cuenta</h2>
                 <form action="" id="form-sign-up">
-                    <input type="email" placeholder="Email:" required>
-                    <button type="submit">
+                    <input id="createemail" type="email" placeholder="Email:" required>
+                    <button id="createsubmit" type="submit">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
                                 d="M15.713 12L9.70202 5.99001L8.28802 7.40401L12.888 12.004L8.28802 16.597L9.70202 18.011L15.713 12Z"

@@ -1,7 +1,7 @@
 <?php
 $HOST = "localhost";
-$USER = "nueve";
-$PASS = "9999nueve9";
+$USER = "root";
+$PASS = "";
 $DB = "nueve";
 //
 //nos conectamos con la base de datos

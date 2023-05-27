@@ -24,7 +24,6 @@ if (mysqli_num_rows($resultado) == 1) {
     $_SESSION['id'] = $fila['id'];
     $_SESSION['nombre'] = $fila['nombre'];
     // Redirigir al usuario a la página principal, por ejemplo:
-    header('Location: index.html');
     exit();
   } else {
     // Contraseña incorrecta

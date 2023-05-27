@@ -23,7 +23,7 @@ $mysql= mysqli_query($con,$sql);
   if(!$mysql){
      die('Query Error'. mysqli_error($con));
   }
-$mysql2= mysqli_error($con, $slq2);
+$mysql2 = mysqli_query($con, $sql2);
 if(!$mysql){
   die('Query Error'. mysqli_error($con));
 }
