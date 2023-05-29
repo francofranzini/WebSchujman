@@ -163,7 +163,7 @@ $(document).ready(function () {
         $.ajax({
             url: 'includes/register.php',
             type: 'POST',
-            data:{email: $('#createemail').val()},
+            data:{email: email},
             success: function(response) {
                 console.log("cuenta creada exitosamente");
             },
