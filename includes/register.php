@@ -2,9 +2,8 @@
 // procesar_registro.php
 include('conexionDB.php');
 // Obtener los datos enviados por el formulario
-$nombre = $_POST['nombre'];
 $email = $_POST['email'];
-$pass = $_POST['pass'];
+
 
 // Verificar si el email ya está registrado
 $consulta = "SELECT * FROM usuarios WHERE email = '$email'";
@@ -23,8 +22,7 @@ else{
   $resultado = mysqli_query($con, $consulta);
 
   if ($resultado) {
-    // Registro exitoso, redirigir al usuario a la página de inicio de sesión
-    header('Location: index.html');
+    // Registro exitoso
     exit();
   } else {
     // Error al insertar el usuario, mostrar un mensaje de error

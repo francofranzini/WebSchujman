@@ -136,7 +136,43 @@ $(document).ready(function () {
 
     });
 
- 
+    //comportamiento del boton 'inicio sesion' (signsubmit)
+    $(document).on('click', '#signsubmit', function(){
+        let postData = {
+            email: $('#signemail').val(),
+            pass: $('#signpass').val()
+        };
+
+        $.ajax({
+            url: 'includes/login.php',
+            type: 'POST',
+            data: postData,
+            success: function(response) {
+                console.log("Inicio de sesión exitoso");
+            },
+            error: function (jqXHR, exception) {
+                console.log(jqXHR);
+                console.log(exception);
+                $('#form-sign-in').trigger('reset');
+            }, 
+        });
+    });
+    
+    $(document).on('click', '#createsubmit', function(){
+        let email = $('#createemail').val();
+        $.ajax({
+            url: 'includes/register.php',
+            type: 'POST',
+            data:{email: $('#createemail').val()},
+            success: function(response) {
+                console.log("cuenta creada exitosamente");
+            },
+            error: function (jqXHR, exception) {
+                console.log(jqXHR);
+            },
+
+        });
+    });
     
 
 

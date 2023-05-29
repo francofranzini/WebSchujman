@@ -24,15 +24,23 @@ if (mysqli_num_rows($resultado) == 1) {
     $_SESSION['id'] = $fila['id'];
     $_SESSION['nombre'] = $fila['nombre'];
     // Redirigir al usuario a la página principal, por ejemplo:
-    header('Location: index.html');
     exit();
   } else {
     // Contraseña incorrecta
     // Manejar el error o mostrar un mensaje de error al usuario
-    echo 'Contraseña incorrecta';
+    $response = [
+      'success' => false,
+      'error' => "Contraseña incorrecta"
+    ];
+    echo (json_encode($response));
   }
-} else {
+}
+else {
   // Email no encontrado
   // Manejar el error o mostrar un mensaje de error al usuario
-  echo 'Email no encontrado';
+  $response = [
+    'success' => false,
+    'error' => "el mail no se encuentra registrado"
+  ];
+  echo (json_encode($response));
 }
