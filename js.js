@@ -4,11 +4,9 @@
     window.addEventListener("popstate", (e) => {
         switch (latestHistoryState) {
             case "openSign":
-                console.log("section opne")
                 openSection();
                 break;
             case "openConfiguration":
-                console.log("section opne")
                 openSection();
                 break;
         }
@@ -19,46 +17,51 @@
 
     //capas
     const openConfiguration = () => {
-        history.pushState("openConfiguration", "", "/~nueve/"); latestHistoryState = "openConfiguration";
+        history.pushState("openConfiguration", "", ""); latestHistoryState = "openConfiguration";
+        document.querySelector("body").style.cssText = "position: fixed;"
         document.querySelector(".section-conteiner").style.display = "none"
         document.querySelector(".configuration-conteiner").style.display = "block";
-        document.querySelector("nav img").style.display = "none"
-        document.querySelector("nav svg").style.display = "block"
+        document.querySelector("nav .logo").style.display = "none"
+        document.querySelector("nav .arrow-back").style.display = "block"
     }
     const openSignRestore = () => {
         if (document.querySelector(".sign-conteiner").style.display != "block")
-            history.pushState("openSign", "", "/~nueve/"); latestHistoryState = "openSign";
+            history.pushState("openSign", "", ""); latestHistoryState = "openSign";
+        document.querySelector("body").style.cssText = "position: fixed;"
         document.querySelector(".section-conteiner").style.display = "none"
         document.querySelector(".sign-conteiner").style.display = "block"
         document.querySelector(".sign-conteiner .conteiner").style.cssText = " translate: 0%;"
-        document.querySelector("nav img").style.display = "none"
-        document.querySelector("nav svg").style.display = "block"
+        document.querySelector("nav .logo").style.display = "none"
+        document.querySelector("nav .arrow-back").style.display = "block"
     }
     const openSignIn = () => {
         if (document.querySelector(".sign-conteiner").style.display != "block")
-            history.pushState("openSign", "", "/~nueve/"); latestHistoryState = "openSign";
+            history.pushState("openSign", "", ""); latestHistoryState = "openSign";
+        document.querySelector("body").style.cssText = "position: fixed;"
         document.querySelector(".section-conteiner").style.display = "none"
         document.querySelector(".sign-conteiner").style.display = "block"
         document.querySelector(".sign-conteiner .conteiner").style.cssText = " translate: -100%;"
-        document.querySelector("nav img").style.display = "none"
-        document.querySelector("nav svg").style.display = "block"
+        document.querySelector("nav .logo").style.display = "none"
+        document.querySelector("nav .arrow-back").style.display = "block"
     }
     const openSignUp = () => {
         if (document.querySelector(".sign-conteiner").style.display != "block")
-            history.pushState("openSign", "", "/~nueve/"); latestHistoryState = "openSign";
+            history.pushState("openSign", "", ""); latestHistoryState = "openSign";
+        document.querySelector("body").style.cssText = "position: fixed;"
         document.querySelector(".section-conteiner").style.display = "none"
         document.querySelector(".sign-conteiner").style.display = "block"
         document.querySelector(".sign-conteiner .conteiner").style.cssText = " translate: -200%;"
-        document.querySelector("nav img").style.display = "none"
-        document.querySelector("nav svg").style.display = "block"
+        document.querySelector("nav .logo").style.display = "none"
+        document.querySelector("nav .arrow-back").style.display = "block"
     }
     const openSection = () => {
+        document.querySelector("body").style.cssText = "position: relative;"
         document.querySelector(".section-conteiner").style.display = "block"
         document.querySelector(".configuration-conteiner").style.display = "none"
         document.querySelector(".sign-conteiner").style.display = "none"
         document.querySelector(".sign-conteiner .conteiner").style.cssText = " translate: 0%;"
-        document.querySelector("nav img").style.display = "block"
-        document.querySelector("nav svg").style.display = "none"
+        document.querySelector("nav .logo").style.display = "block"
+        document.querySelector("nav .arrow-back").style.display = "none"
     }
 
     //modals
@@ -136,7 +139,7 @@
     })
 
     //NAV BACK ARROW
-    document.querySelector("nav svg").addEventListener("click", () => {
+    document.querySelector("nav .arrow-back").addEventListener("click", () => {
         history.back()
     })
 
@@ -255,8 +258,6 @@
         const url = URL.createObjectURL(file);
         document.querySelector("form .photo-preview img").style.opacity = 1;
         document.querySelector("form .photo-preview img").src = url;
-
-        console.log(document.querySelector("form aside #upload-file-button").value)
     })
     document.querySelector("section form").addEventListener("submit", (e) => {
         e.preventDefault();
