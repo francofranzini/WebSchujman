@@ -18,16 +18,44 @@ Ajax: .ajax(), .get(), .post()
 //de esta forma la funcion fetchTasks() se ejecuta siempre que se carga la pagina
 
 $(document).ready(function () {
-    
-    fetchTasks ();
 
-    
+    //modals
+    const successfulModalAnimation = () => {
+        document.querySelector("#modal-successful").style.cssText = "translate: 40% 0%;"
+        setTimeout(() => {
+            document.querySelector("#modal-successful").style.cssText = "translate: 40% -120%;"
+        }, 2000);
+    }
+    const signUpModalAnimation = (message) => {
+        document.querySelector("#modal-sign-div").style.display = "block"
+        document.querySelector("#modal-sign-div span").textContent = message
+        document.querySelector("#modal-sign-div button").onclick = () => {
+            document.querySelector("#modal-sign-div").style.display = "none"
+            openSignIn()
+        }
+    }
+
+
+    //animation
+    const submitButtonAnimation = (active) => {
+        if (active) {
+            document.querySelector("form button[type='submit'] p").style.cssText = "left: -100%;";
+            document.querySelector("form button[type='submit'] .loader").style.cssText = "right: -50%; transform: translateY(-50%) translateX(-50%);";
+        } else {
+            document.querySelector("form button[type='submit'] p").style.cssText = "left: 50%;";
+            document.querySelector("form button[type='submit'] .loader").style.cssText = "right: -100%; transform: translateY(-50%) translateX(0%);";
+        }
+    }
+
+    fetchTasks();
+
+
     //FUNCIONA
-    function fetchTasks () {
+    function fetchTasks() {
         $.ajax({
             url: 'includes/tasklist.php',
             type: 'GET',
-            success: function (response){
+            success: function (response) {
                 let tasks = JSON.parse(response);
                 let template = '';
                 tasks.forEach(task => {
@@ -62,9 +90,9 @@ $(document).ready(function () {
             error: function (jqXHR, exception) {
                 console.log(jqXHR);
             }
-        })    
+        })
     }
-    
+
 
     //para que se ejecute esto, se debe configurar en el frontend los objetos
     //con clase '.delete-button' para que se ejecute esta funcion
@@ -76,15 +104,15 @@ $(document).ready(function () {
             $.ajax({
                 url: 'includes/taskdelete.php',
                 type: 'POST',
-                data: {id: id},
+                data: { id: id },
                 success: function (response) {
-                    fetchTasks();     
-                    console.log(response);   
+                    fetchTasks();
+                    console.log(response);
                 },
                 error: function (jqXHR, exception) {
                     console.log(jqXHR);
                 }
-            });      
+            });
         }
     });
 
@@ -93,17 +121,18 @@ $(document).ready(function () {
     $(document).on('click', '.edit-button', function (e) {
         let cltr = $(this).closest('tr').attr('id');
         $('#save').data("id", cltr);
-        $('#save').data("modo",2);
+        $('#save').data("modo", 2);
     });
     //funciona
     $(document).on('click', '#agregar', function () {
-        $('#save').data("modo",1);
+        $('#save').data("modo", 1);
     });
 
 
     //comportamiento del boton guardar
     $('#save').click(function (e) {
         e.preventDefault(); //Hacemos que no se refresque la página por defecto. 
+        submitButtonAnimation(true)
         let postData = { //Lo que le enviaremos al servidor.
             id: $(this).data("id"),
             nombre: $('#nombre').val(),
@@ -112,22 +141,25 @@ $(document).ready(function () {
             dni: $('#dni').val(),
             imagen: $('#imagen').val()
         };
-        if($(this).data("modo") == 1) //agregar nuevo
+        if ($(this).data("modo") == 1) //agregar nuevo
         {
             url = 'includes/taskadd.php';
         }
-        else{ // modificar existente
+        else { // modificar existente
             url = 'includes/taskupdate.php';
         }
         $.ajax({
             url: url,
             type: 'POST',
             data: postData,
-            success: function(response) {
-                fetchTasks ();
+            success: function (response) {
+                fetchTasks();
                 //Al agregar una nueva task y tocar el botón "Save Task",
                 //reseteo el formulario.
                 $('#all-tasks').trigger('reset');
+
+                successfulModalAnimation()
+                submitButtonAnimation(false)
             },
             error: function (jqXHR, exception) {
                 console.log(jqXHR);
@@ -137,7 +169,7 @@ $(document).ready(function () {
     });
 
     //comportamiento del boton 'inicio sesion' (signsubmit)
-    $(document).on('click', '#signsubmit', function(){
+    $(document).on('click', '#signsubmit', function () {
         let postData = {
             email: $('#signemail').val(),
             pass: $('#signpass').val()
@@ -147,24 +179,27 @@ $(document).ready(function () {
             url: 'includes/login.php',
             type: 'POST',
             data: postData,
-            success: function(response) {
+            success: function (response) {
                 console.log("Inicio de sesión exitoso");
             },
             error: function (jqXHR, exception) {
                 console.log(jqXHR);
                 console.log(exception);
                 $('#form-sign-in').trigger('reset');
-            }, 
+            },
         });
     });
-    
-    $(document).on('click', '#createsubmit', function(){
+
+    $(document).on('click', '#createsubmit', function () {
         let email = $('#createemail').val();
         $.ajax({
             url: 'includes/register.php',
             type: 'POST',
-            data:{email: email},
-            success: function(response) {
+            data: { email: email },
+            success: function (response) {
+                const mail = document.querySelector(".sign-conteiner .sign-restore-div input").value
+                const message = "Le enviamos un mail a " + mail + " para que puedas restablecer tu contraseña"
+                signUpModalAnimation(message)
                 console.log("cuenta creada exitosamente");
             },
             error: function (jqXHR, exception) {
@@ -173,7 +208,7 @@ $(document).ready(function () {
 
         });
     });
-    
+
 
 
 }); 

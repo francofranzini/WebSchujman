@@ -80,7 +80,6 @@
         }
     }
 
-
     //animation
     const submitButtonAnimation = (active) => {
         if (active) {
@@ -251,7 +250,6 @@
             if (currentUserInfo[i] !== userSelectedInfo[i])
                 return true
         }
-
     }
     document.querySelector("section form #upload-file-button").addEventListener("change", (e) => {
         const file = e.target.files[0];
