@@ -190,20 +190,25 @@ $(document).ready(function () {
         });
     });
 
-    $(document).on('click', '#createsubmit', function () {
+    $(document).on('submit', '#form-sign-up', function (e) {
+        e.preventDefault();
         let email = $('#createemail').val();
+        let pass = $('#createpass').val();
         $.ajax({
             url: 'includes/register.php',
             type: 'POST',
-            data: { email: email },
+            data:{ 
+                email: email,
+                pass: pass
+            },
             success: function (response) {
-                const mail = document.querySelector(".sign-conteiner .sign-restore-div input").value
-                const message = "Le enviamos un mail a " + mail + " para que puedas restablecer tu contraseña"
-                signUpModalAnimation(message)
-                console.log("cuenta creada exitosamente");
+                console.log(response);
+                e.target.reset()
             },
             error: function (jqXHR, exception) {
                 console.log(jqXHR);
+                console.log(exception);
+                e.target.reset();
             },
 
         });
