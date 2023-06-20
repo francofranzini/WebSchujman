@@ -243,7 +243,7 @@
             name: e.target.querySelector("form .name-input").value,
             age: e.target.querySelector("form .age-input").value,
             email: e.target.querySelector("form .email-input").value,
-            id: e.target.querySelector("form .id-input").value,
+            dni: e.target.querySelector("form .id-input").value,
             url: e.target.querySelector("form aside .photo-preview img").src,
         }
         for (i in currentUserInfo) {

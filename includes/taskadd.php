@@ -9,6 +9,7 @@
     $edad = $_POST['edad'];
     $email = $_POST['email'];
     $dni = $_POST['dni'];
+    $userid = $_POST['userid'];
     $imagen = $_POST['imagen'];
 
     //isset: determina si una variable está definida y no es null.
@@ -17,7 +18,7 @@
         $nombre = $con->real_escape_string($nombre);
         
         if (!empty($nombre)) {
-            $query = "INSERT into alumnos (nombre, edad, email, dni) VALUES ('$nombre', '$edad', '$email', '$dni')";
+            $query = "INSERT into alumnos (nombre, edad, email, dni, userid) VALUES ('$nombre', '$edad', '$email', '$dni', '$userid')";
             $result = mysqli_query($con, $query);
 
             if(!$result) {

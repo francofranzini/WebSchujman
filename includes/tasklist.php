@@ -5,8 +5,9 @@
     //mediante js, las mostremos en el frontend.
 
     include('conexionDB.php');
+    $userid = $_POST['userid'];
 
-    $query = "SELECT * from alumnos";
+    $query = "SELECT * from alumnos where userid = '$userid'";
     $result = mysqli_query($con, $query);
 
     if (!$result) {

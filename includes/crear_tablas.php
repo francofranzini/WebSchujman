@@ -7,6 +7,7 @@ $sql = "CREATE TABLE IF NOT EXISTS alumnos (
     edad INT NOT NULL,
     email VARCHAR (255) NOT NULL,
     dni INT NOT NULL,
+    userid INT NOT NULL,
     imagen TEXT
 )";
 
