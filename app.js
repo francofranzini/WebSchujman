@@ -17,7 +17,7 @@ Ajax: .ajax(), .get(), .post()
 //la siguiente funcion se ejecuta cada vez que se abre el documento
 //de esta forma la funcion fetchTasks() se ejecuta siempre que se carga la pagina
   
-let userid = null; 
+
 
 
 $(document).ready(function () {
@@ -55,7 +55,9 @@ $(document).ready(function () {
 
     //FUNCIONA
     function fetchTasks() {
-        $.ajax({
+      const userid = localStorage.getItem('userid');
+      //document.cookie = "userid = null";  
+      $.ajax({
             url: 'includes/tasklist.php',
             type: 'GET',
             data: userid,
@@ -175,6 +177,7 @@ $(document).ready(function () {
     //comportamiento del boton 'inicio sesion' (signsubmit)
     $(document).on('submit', '#form-sign-in', function (e) {
         e.preventDefault();
+        //const userid = localStorage.getItem('userid');
         let postData = {
             email: $('#signemail').val(),
             pass: $('#signpass').val()
@@ -187,16 +190,16 @@ $(document).ready(function () {
             data: postData,
             success: function (response) {
                 console.log("Inicio de sesión exitoso");
-                userid = response;
+                localStorage.setItem('userid', response);
+                const userid = localStorage.getItem('userid');
                 $('#form-sign-in').trigger('reset');
                 console.log(userid);
-                
             },
             error: function (jqXHR, exception) {
                 console.log(jqXHR);
                 console.log(exception);
                 $('#form-sign-in').trigger('reset');
-                console.log(userid);
+            //    console.log(userid);
             },
         });
         e.target.reset();
