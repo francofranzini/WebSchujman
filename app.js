@@ -31,7 +31,7 @@ $(document).ready(function () {
         document.querySelector("#modal-sign-div span").textContent = message
         document.querySelector("#modal-sign-div button").onclick = () => {
             document.querySelector("#modal-sign-div").style.display = "none"
-            openSignIn()
+            //openSignIn()
         }
     }
 
@@ -190,16 +190,17 @@ $(document).ready(function () {
         });
     });
 
-    $(document).on('click', '#createsubmit', function () {
+    $(document).on('submit', '#form-sign-up', function (e) {
+        e.preventDefault();
         let email = $('#createemail').val();
+        console.log('#form-sign-up email');
         $.ajax({
             url: 'includes/register.php',
             type: 'POST',
             data: { email: email },
             success: function (response) {
-                const mail = document.querySelector(".sign-conteiner .sign-restore-div input").value
-                const message = "Le enviamos un mail a " + mail + " para que puedas restablecer tu contraseña"
-                signUpModalAnimation(message)
+                const message = "Le enviamos un mail a " + email + " para que puedas restablecer tu contraseña";
+                signUpModalAnimation(message);
                 console.log("cuenta creada exitosamente");
             },
             error: function (jqXHR, exception) {
