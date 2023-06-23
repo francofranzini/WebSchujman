@@ -16,6 +16,9 @@ Ajax: .ajax(), .get(), .post()
 
 //la siguiente funcion se ejecuta cada vez que se abre el documento
 //de esta forma la funcion fetchTasks() se ejecuta siempre que se carga la pagina
+  
+
+
 
 $(document).ready(function () {
 
@@ -52,9 +55,12 @@ $(document).ready(function () {
 
     //FUNCIONA
     function fetchTasks() {
-        $.ajax({
+      const userid = localStorage.getItem('userid');
+      //document.cookie = "userid = null";  
+      $.ajax({
             url: 'includes/tasklist.php',
             type: 'GET',
+            data: userid,
             success: function (response) {
                 let tasks = JSON.parse(response);
                 let template = '';
@@ -169,11 +175,14 @@ $(document).ready(function () {
     });
 
     //comportamiento del boton 'inicio sesion' (signsubmit)
-    $(document).on('click', '#signsubmit', function () {
+    $(document).on('submit', '#form-sign-in', function (e) {
+        e.preventDefault();
+        //const userid = localStorage.getItem('userid');
         let postData = {
             email: $('#signemail').val(),
             pass: $('#signpass').val()
         };
+        console.log(postData);
 
         $.ajax({
             url: 'includes/login.php',
@@ -181,34 +190,46 @@ $(document).ready(function () {
             data: postData,
             success: function (response) {
                 console.log("Inicio de sesión exitoso");
+                localStorage.setItem('userid', response);
+                const userid = localStorage.getItem('userid');
+                $('#form-sign-in').trigger('reset');
+                console.log(userid);
             },
             error: function (jqXHR, exception) {
                 console.log(jqXHR);
                 console.log(exception);
                 $('#form-sign-in').trigger('reset');
+            //    console.log(userid);
             },
         });
+        e.target.reset();
     });
 
     $(document).on('submit', '#form-sign-up', function (e) {
         e.preventDefault();
         let email = $('#createemail').val();
-        console.log('#form-sign-up email');
+        let pass = $('#createpass').val();
         $.ajax({
             url: 'includes/register.php',
             type: 'POST',
-            data: { email: email },
+            data:{ 
+                email: email,
+                pass: pass
+            },
             success: function (response) {
-                const message = "Le enviamos un mail a " + email + " para que puedas restablecer tu contraseña";
-                signUpModalAnimation(message);
-                console.log("cuenta creada exitosamente");
+                console.log(response);
+                e.target.reset()
             },
             error: function (jqXHR, exception) {
                 console.log(jqXHR);
+                console.log(exception);
+                e.target.reset();
             },
 
         });
     });
+
+    
 
 
 

@@ -3,6 +3,7 @@
 include('conexionDB.php');
 // Obtener los datos enviados por el formulario
 $email = $_POST['email'];
+$pass = $_POST['pass'];
 
 function generarContrasena() {
   $longitud = 8;
@@ -37,16 +38,14 @@ if (mysqli_num_rows($resultado) > 0) {
 } 
 else{
   // El email no está registrado, crear un nuevo usuario
-  $pass = generarContrasena();
   $passHash = password_hash($pass, PASSWORD_DEFAULT);
 
   // Insertar el nuevo usuario en la base de datos
-  $consulta = "INSERT INTO usuarios (nombre, email, pass) VALUES ('$nombre', '$email', '$passHash')";
+  $consulta = "INSERT INTO usuarios (email, pass) VALUES ('$email', '$passHash')";
   $resultado = mysqli_query($con, $consulta);
 
   if ($resultado) {
     // Registro exitoso
-    enviar_mail($pass);
     exit();
   } else {
     // Error al insertar el usuario, mostrar un mensaje de error
