@@ -59,7 +59,7 @@
             <label class="fondo-options" for="menu-sign"></label>
             <div class="options animate__animated animate__bounceIn">
                 <li class="signed config-button">Configuracion</li>
-                <li class="signed sign-out-button" style="color: rgb(188, 46, 46);">Cerrar sesion</li>
+                <li id = "cerrarsesion" class="signed sign-out-button" style="color: rgb(188, 46, 46);">Cerrar sesion</li>
 
                 <li class="no-signed sign-in-button">Iniciar sesion</li>
                 <li class="no-signed sign-up-button">Crear cuenta</li>
@@ -146,7 +146,7 @@
     <div class="section-conteiner">
         <section>
             <div class="bar">
-                <button class="add-button" id="agregar">
+                <div class="signed"><button class="add-button" id="agregar">
                     ADD
                     <svg width="20" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path
@@ -154,6 +154,7 @@
                             fill="#2D2D2D" fill-opacity="0.75" />
                     </svg>
                 </button>
+            </div>
                 <div class="filter-div">
                     <select name="" id="">
                         <option value="name">NAME</option>

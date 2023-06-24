@@ -729,11 +729,3 @@ section form aside button[type="submit"] p {
 .section-conteiner {
     display: block;
 }
-
-.no-signed {
-    display: block;
-}
-
-.signed {
-    display: none;
-}

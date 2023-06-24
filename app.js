@@ -16,10 +16,7 @@ Ajax: .ajax(), .get(), .post()
 
 //la siguiente funcion se ejecuta cada vez que se abre el documento
 //de esta forma la funcion fetchTasks() se ejecuta siempre que se carga la pagina
-  
-
-
-
+switchUserMenu(localStorage.getItem('userid'));
 $(document).ready(function () {
 
     //modals
@@ -59,8 +56,8 @@ $(document).ready(function () {
       //document.cookie = "userid = null";  
       $.ajax({
             url: 'includes/tasklist.php',
-            type: 'GET',
-            data: userid,
+            type: 'POST',
+            data: {userid: userid},
             success: function (response) {
                 let tasks = JSON.parse(response);
                 let template = '';
@@ -121,8 +118,6 @@ $(document).ready(function () {
             });
         }
     });
-
-
     //funciona
     $(document).on('click', '.edit-button', function (e) {
         let cltr = $(this).closest('tr').attr('id');
@@ -145,8 +140,10 @@ $(document).ready(function () {
             edad: $('#edad').val(),
             email: $('#email').val(),
             dni: $('#dni').val(),
+            userid: localStorage.getItem('userid'),
             imagen: $('#imagen').val()
         };
+
         if ($(this).data("modo") == 1) //agregar nuevo
         {
             url = 'includes/taskadd.php';
@@ -163,21 +160,23 @@ $(document).ready(function () {
                 //Al agregar una nueva task y tocar el botón "Save Task",
                 //reseteo el formulario.
                 $('#all-tasks').trigger('reset');
-
+                console.log(response);
                 successfulModalAnimation()
                 submitButtonAnimation(false)
             },
             error: function (jqXHR, exception) {
                 console.log(jqXHR);
+                console.log(exception);
             }
         });
 
     });
 
     //comportamiento del boton 'inicio sesion' (signsubmit)
+    //FUNCIONA
     $(document).on('submit', '#form-sign-in', function (e) {
         e.preventDefault();
-        //const userid = localStorage.getItem('userid');
+        const userid = localStorage.getItem('userid');
         let postData = {
             email: $('#signemail').val(),
             pass: $('#signpass').val()
@@ -189,11 +188,14 @@ $(document).ready(function () {
             type: 'POST',
             data: postData,
             success: function (response) {
-                console.log("Inicio de sesión exitoso");
                 localStorage.setItem('userid', response);
                 const userid = localStorage.getItem('userid');
                 $('#form-sign-in').trigger('reset');
-                console.log(userid);
+                switchUserMenu(userid);
+                if(userid){
+                    history.back();
+                    fetchTasks();
+                }
             },
             error: function (jqXHR, exception) {
                 console.log(jqXHR);
@@ -203,8 +205,9 @@ $(document).ready(function () {
             },
         });
         e.target.reset();
+        
     });
-
+    //FUNCIONA
     $(document).on('submit', '#form-sign-up', function (e) {
         e.preventDefault();
         let email = $('#createemail').val();
@@ -228,9 +231,33 @@ $(document).ready(function () {
 
         });
     });
-
+    //FUNCIONA
+    $(document).on('click', '#cerrarsesion', function(e){
+        localStorage.removeItem('userid');
+        switchUserMenu(null);
+        location.reload();
+    })
     
 
 
 
 }); 
+
+function switchUserMenu (userid){
+    if(userid){
+        document.querySelectorAll('.signed').forEach((element)=> {
+            element.style.display= "block"
+        });
+        document.querySelectorAll('.no-signed').forEach((element)=> {
+            element.style.display= "none"
+        });
+    }
+    else{
+        document.querySelectorAll('.signed').forEach((element)=> {
+            element.style.display= "none"
+        });
+        document.querySelectorAll('.no-signed').forEach((element)=> {
+            element.style.display= "block"
+        });
+    }
+}
