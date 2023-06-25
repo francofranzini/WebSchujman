@@ -23,9 +23,13 @@
 
             if(!$result) {
                 die('Query Error'. mysqli_error($con));
+                echo 'error de conexion';
             }
 
             echo "Task Added Successfully";
+        }
+        else{
+            echo "no hay nombre";
         }
     }
 ?>

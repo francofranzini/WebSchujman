@@ -46,6 +46,7 @@ else{
 
   if ($resultado) {
     // Registro exitoso
+    echo "registro exitoso";
     exit();
   } else {
     // Error al insertar el usuario, mostrar un mensaje de error
