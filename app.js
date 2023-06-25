@@ -163,6 +163,7 @@ $(document).ready(function () {
                 console.log(response);
                 successfulModalAnimation()
                 submitButtonAnimation(false)
+                document.querySelector(".form-div").style.cssText = "height: 0;";
             },
             error: function (jqXHR, exception) {
                 console.log(jqXHR);
