@@ -20,10 +20,23 @@ if (mysqli_num_rows($resultado) == 1) {
     // Inicio de sesión exitoso
     // Crear una sesión de usuario (ver paso 3)
     session_start();
-    $_SESSION['email'] = $email;
-    $_SESSION['id'] = $fila['id'];
-    $_SESSION['nombre'] = $fila['nombre'];
-    echo $fila['id'];
+    
+    $userdata = array();
+    while ($row = mysqli_fetch_array($resultado,1)) {
+        $userdata[] = array(
+            'id' => $row['id'],
+            'email' => $row['email'],
+            'isadmin' => $row['isadmin']
+        );
+    }
+    
+    $datastring = json_encode($userdata);
+    
+    echo $datastring;
+    
+
+
+    
 
 
     // Redirigir al usuario a la página principal, por ejemplo:

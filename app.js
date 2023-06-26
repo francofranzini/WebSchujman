@@ -189,10 +189,15 @@ $(document).ready(function () {
             type: 'POST',
             data: postData,
             success: function (response) {
-                localStorage.setItem('userid', response);
+                localStorage.setItem('userid', response.id);
                 const userid = localStorage.getItem('userid');
+                console.log(response);    
+                localStorage.setItem('isadmin', response.isadmin);
+                const isadmin = localStorage.getItem('isadmin');
+               
                 $('#form-sign-in').trigger('reset');
                 switchUserMenu(userid);
+                
                 if(userid){
                     history.back();
                     fetchTasks();
@@ -243,6 +248,18 @@ $(document).ready(function () {
 
 
 }); 
+
+function seeUserData(isadmin){
+    if(isadmin === 1){
+        document.querySelectorAll('.admin').forEach((element)=> {
+            element.style.display = 'block'
+            
+        });
+    }
+    
+    
+
+}
 
 function switchUserMenu (userid){
     if(userid){

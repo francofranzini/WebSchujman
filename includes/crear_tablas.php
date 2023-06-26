@@ -15,7 +15,8 @@ $sql2 = "CREATE TABLE IF NOT EXISTS usuarios(
   id INT AUTO_INCREMENT PRIMARY KEY,
   nombre varchar(60),
   email varchar(255) NOT NULL,
-  pass varchar(255) NOT NULL
+  pass varchar(255) NOT NULL,
+  isadmin int default 0 
 )";
 //
 //verificar que se haya creado la tabla
