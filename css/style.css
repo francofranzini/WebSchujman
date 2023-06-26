@@ -510,7 +510,9 @@ section select option {
 }
 
 section .table {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
     width: 100%;
     box-shadow: var(--shadow);
     overflow-x: auto;
@@ -571,6 +573,31 @@ td.edit svg:active>path {
 
 td:nth-last-child(1) {
     border-right: none;
+}
+
+section table.admin .action-th {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+section table.admin .action-th button {
+    font-size: 13px;
+    width: 100px;
+    height: 40px;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: rgb(234, 234, 234);
+    transition: all .2s;
+    font-weight: bold;
+}
+
+section table.admin .action-th button:hover{
+    background-color: var(--black-color);
+    color: #fff;
 }
 
 section .form-div {

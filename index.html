@@ -8,7 +8,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/loader.css">
-    
+
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -59,7 +59,7 @@
             <label class="fondo-options" for="menu-sign"></label>
             <div class="options animate__animated animate__bounceIn">
                 <li class="signed config-button">Configuracion</li>
-                <li id = "cerrarsesion" class="signed sign-out-button" style="color: rgb(188, 46, 46);">Cerrar sesion</li>
+                <li id="cerrarsesion" class="signed sign-out-button" style="color: rgb(188, 46, 46);">Cerrar sesion</li>
 
                 <li class="no-signed sign-in-button">Iniciar sesion</li>
                 <li class="no-signed sign-up-button">Crear cuenta</li>
@@ -147,14 +147,14 @@
         <section>
             <div class="bar">
                 <div class="signed"><button class="add-button" id="agregar">
-                    ADD
-                    <svg width="20" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M8.66671 8.66665V12.6666H7.33337V8.66665H3.33337V7.33331H7.33337V3.33331H8.66671V7.33331H12.6667V8.66665H8.66671Z"
-                            fill="#2D2D2D" fill-opacity="0.75" />
-                    </svg>
-                </button>
-            </div>
+                        ADD
+                        <svg width="20" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M8.66671 8.66665V12.6666H7.33337V8.66665H3.33337V7.33331H7.33337V3.33331H8.66671V7.33331H12.6667V8.66665H8.66671Z"
+                                fill="#2D2D2D" fill-opacity="0.75" />
+                        </svg>
+                    </button>
+                </div>
                 <div class="filter-div">
                     <select name="" id="">
                         <option value="name">NAME</option>
@@ -224,6 +224,25 @@
                         </tr>
                     </thead>
                     <tbody id="all-tasks">
+                    </tbody>
+                </table>
+                <table class="admin">
+                    <thead>
+                        <tr>
+                            <th>EMAIL</th>
+                            <th>SINCE</th>
+                            <th>ACTION</th>
+                        </tr>
+                    </thead>
+                    <tbody id="all-tasks-admin">
+                        <tr>
+                            <td>renaudo@gmail.com</td>
+                            <td>19/05/23 17:00</td>
+                            <td class="action-th">
+                                <button>ELIMINAR</button>
+                                <button>RESTRINGIR</button>
+                            </td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
