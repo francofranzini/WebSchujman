@@ -1,18 +1,18 @@
 <?php
 
-    //En este archivo php nos encargaremos de actualizar
-    //la información de una tarea.
+//En este archivo php nos encargaremos de actualizar
+//la información de un usuario.
 
-    include('conexionDB.php');
-    $id = $_POST['id'];
-  
+include('conexionDB.php');
+$id = $_POST['id'];
 
-        $query = "UPDATE usuarios SET isadmin = 2  WHERE id = $id";
-        $result = mysqli_query($con, $query);
 
-        if (!$result) {
-            die('Query Error'. mysqli_error($con));
-        }
+$query = "UPDATE usuarios SET isadmin = 2  WHERE id = $id";
+$result = mysqli_query($con, $query);
 
-        echo "Task has been updated";
+if (!$result) {
+    die('Query Error' . mysqli_error($con));
+}
+
+echo "Task has been updated";
 ?>

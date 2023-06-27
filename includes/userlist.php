@@ -19,6 +19,7 @@
         $json[] = array(
             'id' => $row['id'],
             'email' => $row['email'],
+            'isadmin' => $row['isadmin'],
         );
     }
 
