@@ -8,7 +8,7 @@
     
 
     if (isset($id)) {
-        $query = "DELETE FROM usuario WHERE id = $id";
+        $query = "DELETE FROM usuarios WHERE id = $id";
         $result = mysqli_query($con, $query);
 
         if (!$result) {

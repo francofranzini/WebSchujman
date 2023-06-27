@@ -595,7 +595,7 @@ section table.admin .action-th button {
     font-weight: bold;
 }
 
-section table.admin .action-th button:hover{
+section table.admin .action-th button:hover {
     background-color: var(--black-color);
     color: #fff;
 }
@@ -742,6 +742,15 @@ section form aside button[type="submit"] p {
     transition: .3s all;
 }
 
+
+
+section .restricted-message {
+    display: none;
+    text-align: center;
+    color: #ffffff;
+    font-weight: lighter;
+    text-transform: uppercase;
+}
 
 
 /*MANEJO DE CAPAS*/

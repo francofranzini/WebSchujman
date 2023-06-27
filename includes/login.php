@@ -22,13 +22,13 @@ if (mysqli_num_rows($resultado) == 1) {
     session_start();
     
     $userdata = array();
-    while ($row = mysqli_fetch_array($resultado,1)) {
+   // while ($row = mysqli_fetch_array($resultado,1)) {
         $userdata[] = array(
-            'id' => $row['id'],
-            'email' => $row['email'],
-            'isadmin' => $row['isadmin']
+            'id' => $fila['id'],
+            'email' => $fila['email'],
+            'isadmin' => $fila['isadmin']
         );
-    }
+   // }
     
     $datastring = json_encode($userdata);
     
