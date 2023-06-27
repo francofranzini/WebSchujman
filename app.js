@@ -17,6 +17,8 @@ Ajax: .ajax(), .get(), .post()
 //la siguiente funcion se ejecuta cada vez que se abre el documento
 //de esta forma la funcion fetchTasks() se ejecuta siempre que se carga la pagina
 switchUserMenu(localStorage.getItem('userid'));
+seeUserData(localStorage.getItem('isadmin'))
+
 $(document).ready(function () {
 
     //modals
@@ -47,17 +49,25 @@ $(document).ready(function () {
         }
     }
 
-    fetchTasks();
+
+
+    if (localStorage.getItem('userid')) {
+        if (localStorage.getItem('isadmin') == 1) {
+            fetchUsers()
+        } else {
+            fetchTasks()
+        }
+    }
 
 
     //FUNCIONA
     function fetchTasks() {
-      const userid = localStorage.getItem('userid');
-      //document.cookie = "userid = null";  
-      $.ajax({
+        const userid = localStorage.getItem('userid');
+        //document.cookie = "userid = null";  
+        $.ajax({
             url: 'includes/tasklist.php',
             type: 'POST',
-            data: {userid: userid},
+            data: { userid: userid },
             success: function (response) {
                 let tasks = JSON.parse(response);
                 let template = '';
@@ -89,6 +99,39 @@ $(document).ready(function () {
                 //por cada forEach en tasks, se agrega a template una linea <tr> html con los
                 //datos de cada task en tasks (alumno en alumnos)
                 $('#all-tasks').html(template);
+            },
+            error: function (jqXHR, exception) {
+                console.log(jqXHR);
+            }
+        })
+    }
+
+
+
+    function fetchUsers() {
+        //document.cookie = "userid = null";  
+        $.ajax({
+            url: 'includes/userlist.php',
+            type: 'POST',
+            data: {},
+            success: function (response) {
+                console.log(response)
+                let users = JSON.parse(response);
+                let template = ''; console.log(response)
+                users.forEach(user => {
+                    template += `
+                    <tr id="${user.id}">
+                    <td>${user.email}</td>
+                    <td>${user.id}</td>
+                    <td class="action-th">
+                        <button class="delete-user">ELIMINAR</button>
+                        <button class=${user.isadmin == 2 ? "restricted-user" : "enable-user"}>${user.isadmin == 2 ? "HABILITAR" : "RESTRINGIR"}</button>
+                    </td>
+                </tr>`;
+                });
+                //por cada forEach en user, se agrega a template una linea <tr> html con los
+                //datos de cada user en user (alumno en alumnos)
+                $('#all-user-admin').html(template);
             },
             error: function (jqXHR, exception) {
                 console.log(jqXHR);
@@ -189,24 +232,34 @@ $(document).ready(function () {
             type: 'POST',
             data: postData,
             success: function (response) {
-                localStorage.setItem('userid', response);
+                response = JSON.parse(response)[0]
+                console.log(response);
+                localStorage.setItem('userid', response.id);
                 const userid = localStorage.getItem('userid');
+                localStorage.setItem('isadmin', response.isadmin);
+                const isadmin = response.isadmin
+
                 $('#form-sign-in').trigger('reset');
-                switchUserMenu(userid);
-                if(userid){
+                switchUserMenu(userid, isadmin);
+                seeUserData(isadmin)
+
+                if (userid) {
                     history.back();
                     fetchTasks();
+                }
+                if (isadmin == 1) {
+                    fetchUsers()
                 }
             },
             error: function (jqXHR, exception) {
                 console.log(jqXHR);
                 console.log(exception);
                 $('#form-sign-in').trigger('reset');
-            //    console.log(userid);
+                //    console.log(userid);
             },
         });
         e.target.reset();
-        
+
     });
     //FUNCIONA
     $(document).on('submit', '#form-sign-up', function (e) {
@@ -216,7 +269,7 @@ $(document).ready(function () {
         $.ajax({
             url: 'includes/register.php',
             type: 'POST',
-            data:{ 
+            data: {
                 email: email,
                 pass: pass
             },
@@ -233,32 +286,133 @@ $(document).ready(function () {
         });
     });
     //FUNCIONA
-    $(document).on('click', '#cerrarsesion', function(e){
+    $(document).on('click', '#cerrarsesion', function (e) {
         localStorage.removeItem('userid');
         switchUserMenu(null);
         location.reload();
     })
-    
 
 
 
-}); 
+    //ADMIN
+    $(document).on('click', '.delete-user', function (e) {
+        console.log('ok')
+        if (confirm('Esta seguro de que quiere borrar esto?')) {
+            let element = $(this)[0].parentElement.parentElement;
+            let id = $(element).attr('id');
+            $.ajax({
+                url: 'includes/userdelete.php',
+                type: 'POST',
+                data: { id: id },
+                success: function (response) {
+                    fetchUsers();
+                    console.log(response);
+                },
+                error: function (jqXHR, exception) {
+                    console.log(jqXHR);
+                }
+            });
+        }
+    });
 
-function switchUserMenu (userid){
-    if(userid){
-        document.querySelectorAll('.signed').forEach((element)=> {
-            element.style.display= "block"
+    $(document).on('click', '.restrict-user', function (e) {
+        console.log('ok')
+        if (confirm('Esta seguro de que quiere borrar esto?')) {
+            let element = $(this)[0].parentElement.parentElement;
+            let id = $(element).attr('id');
+            $.ajax({
+                url: 'includes/userrestrict.php',
+                type: 'POST',
+                data: { id: id },
+                success: function (response) {
+                    fetchUsers();
+                    console.log(response);
+                },
+                error: function (jqXHR, exception) {
+                    console.log(jqXHR);
+                }
+            });
+        }
+    });
+
+    $(document).on('click', '.enable-user', function (e) {
+        console.log('ok')
+        if (confirm('Esta seguro de que quiere borrar esto?')) {
+            let element = $(this)[0].parentElement.parentElement;
+            let id = $(element).attr('id');
+            $.ajax({
+                url: 'includes/userenable.php',
+                type: 'POST',
+                data: { id: id },
+                success: function (response) {
+                    fetchUsers();
+                    console.log(response);
+                },
+                error: function (jqXHR, exception) {
+                    console.log(jqXHR);
+                }
+            });
+        }
+    });
+
+
+
+
+
+});
+
+function seeUserData(isadmin) {
+    if (isadmin == 1) {
+        document.querySelectorAll('.admin').forEach((element) => {
+            element.style.display = ''
         });
-        document.querySelectorAll('.no-signed').forEach((element)=> {
-            element.style.display= "none"
+        document.querySelectorAll('.no-admin').forEach((element) => {
+            element.style.display = 'none'
+        });
+    } else if (isadmin == 0) {
+        document.querySelectorAll('.admin').forEach((element) => {
+            element.style.display = 'none'
+        });
+        document.querySelectorAll('.no-admin').forEach((element) => {
+            element.style.display = ''
+        });
+    } else {
+        //open restringed page
+        document.querySelector(".restricted-message").style.display = "block";
+    }
+
+
+    //ADMIN
+
+
+
+
+
+
+
+
+
+
+
+}
+
+function switchUserMenu(userid, isadmin = 0) {
+    if (userid && isadmin != 2) {
+        document.querySelectorAll('.signed').forEach((element) => {
+            element.style.display = "block"
+        });
+        document.querySelectorAll('.no-signed').forEach((element) => {
+            element.style.display = "none"
         });
     }
-    else{
-        document.querySelectorAll('.signed').forEach((element)=> {
-            element.style.display= "none"
+    else {
+        document.querySelectorAll('.signed').forEach((element) => {
+            element.style.display = "none"
         });
-        document.querySelectorAll('.no-signed').forEach((element)=> {
-            element.style.display= "block"
+        document.querySelectorAll('.no-signed').forEach((element) => {
+            element.style.display = "block"
         });
     }
 }
+
+
