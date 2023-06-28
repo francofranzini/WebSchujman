@@ -129,9 +129,8 @@
 
         const mail = e.target.querySelector("input").value;
         const message = "Le enviamos un mail de confirmacion a " + mail + ". Posterior a la confirmacion le generaremos una contraseña"
-        signUpModalAnimation(message)
+        //signUpModalAnimation(message)
 
-        //e.target.reset()
     })
     document.querySelector(".sign-conteiner .sign-up-div .span-sign-up").addEventListener("click", () => {
         openSignIn();

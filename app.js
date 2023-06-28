@@ -277,6 +277,7 @@ $(document).ready(function () {
             },
             success: function (response) {
                 console.log(response);
+                successfulModalAnimation()
                 e.target.reset()
             },
             error: function (jqXHR, exception) {
